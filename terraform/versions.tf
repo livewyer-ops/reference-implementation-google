@@ -2,21 +2,21 @@ terraform {
   required_version = ">= 1.5.5"
 
   required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = ">= 5.17"
+    google = {
+      source  = "hashicorp/google"
+      version = ">= 6.16.0"
     }
     kubernetes = {
       source  = "hashicorp/kubernetes"
-      version = ">= 2.23"
+      version = ">= 2.35.1"
     }
     random = {
       source  = "hashicorp/random"
-      version = ">= 3.5.1"
+      version = ">= 3.6.3"
     }
     kubectl = {
       source  = "alekc/kubectl"
-      version = ">= 2.0.0"
+      version = ">= 2.1.3"
     }
   }
 }

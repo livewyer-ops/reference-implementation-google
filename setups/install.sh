@@ -10,8 +10,8 @@ yq '... comments=""' ${REPO_ROOT}/setups/config.yaml
 echo -e "${GREEN}----------------------------------------------------${NC}"
 echo -e "${PURPLE}\nTargets:${NC}"
 echo "Kubernetes cluster: $(kubectl config current-context)"
-echo "AWS profile (if set): ${AWS_PROFILE}"
-echo "AWS account number: $(aws sts get-caller-identity --query "Account" --output text)"
+echo "GCP account (if set): $(gcloud info --format json | jq -rc '.config.account')"
+echo "GCP project: $(gcloud info --format json | jq -rc '.config.project')"
 
 echo -e "${GREEN}\nAre you sure you want to continue?${NC}"
 read -p '(yes/no): ' response

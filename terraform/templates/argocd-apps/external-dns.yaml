@@ -12,14 +12,16 @@ spec:
   sources:
     - chart: external-dns
       repoURL: https://kubernetes-sigs.github.io/external-dns/
-      targetRevision: 1.13.0
+      targetRevision: 1.15.0
       helm:
         releaseName: external-dns
         valueFiles:
           - $values/packages/external-dns/dev/values.yaml
         parameters:
-          - name: serviceAccount.annotations.eks\.amazonaws\.com/role-arn
-            value: ${ROLE_ARN}
+          - name: provider.name
+            value: google
+          - name: serviceAccount.annotations.iam\.gke\.io/gcp-service-account
+            value: ${GCP_SA_FQN}
           - name: domainFilters[0]
             value: ${DOMAIN_NAME}
     - repoURL: ${GITHUB_URL}

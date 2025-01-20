@@ -105,14 +105,33 @@ data:
       rules:
         - allow: [Component, System, API, Resource, Location, Template]
       locations:
-        # Examples from a public GitHub repository.
         - type: url
-          target: https://github.com/awslabs/backstage-templates-on-eks/blob/main/catalog-info.yaml
-        ## Uncomment these lines to add an example org
+          target: https://github.com/GoogleCloudPlatform/google-cloud-backstage-plugins/blob/main/cloudworkstations/catalog-info.yaml
+        - type: url
+          target: https://github.com/rawanbadawi/backstage-templates/blob/main/catalog-info.yaml
+        # AWS Data-on-EKS
         # - type: url
-        #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/acme-corp.yaml
+        #   target: https://github.com/awslabs/backstage-templates-on-eks/blob/main/catalog-info.yaml
+        # Examples from a public GitHub repository.
+        # Uncomment these lines to add an example org
+        # - type: url
+        #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all.yaml
         #   rules:
         #     - allow: [User, Group]
+      providers:
+        gcp:
+          gke:
+            parents:
+              # consult https://cloud.google.com/kubernetes-engine/docs/ for valid values
+              # list all clusters in the project
+              - 'projects/cnoe-gcp/locations/-'
+              # list all clusters in the region, in the project
+              # - 'projects/some-other-project/locations/some-region'
+            schedule: # optional; same options as in TaskScheduleDefinition
+              # supports cron, ISO duration, "human duration" as used in code
+              frequency: { minutes: 30 }
+              # supports ISO duration, "human duration" as used in code
+              timeout: { minutes: 3 }
     kubernetes:
       serviceLocatorMethod:
         type: 'multiTenant'

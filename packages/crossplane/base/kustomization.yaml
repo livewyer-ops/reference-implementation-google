@@ -1,4 +1,4 @@
 namespace: crossplane-system
 resources:
-  - provider-aws.yaml
-  - provider-aws-config.yaml
+  - provider-gcp.yaml
+  - provider-gcp-config.yaml

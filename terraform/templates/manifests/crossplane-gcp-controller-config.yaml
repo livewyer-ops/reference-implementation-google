@@ -1,9 +1,9 @@
 apiVersion: pkg.crossplane.io/v1alpha1
 kind: ControllerConfig
 metadata:
-  name: provider-aws-config
+  name: provider-gcp-config
   annotations:
-    eks.amazonaws.com/role-arn: ${ROLE_ARN}
+    iam.gke.io/gcp-service-account: ${GCP_ROLE}
 spec:
   podSecurityContext:
     fsGroup: 2000

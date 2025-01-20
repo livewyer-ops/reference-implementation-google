@@ -5,29 +5,41 @@ variable "repo_url" {
 }
 
 variable "tags" {
-    description = "Tags to apply to AWS resources"
-    default = {
-        env = "dev"
-        project = "cnoe"
-    }
-    type = map(string)
+  description = "Tags to apply to GKE resources"
+  default = {
+    env     = "dev"
+    project = "cnoe"
+  }
+  type = map(string)
+}
+
+variable "org_id" {
+  description = "GCP Org ID"
+  type        = string
+  default     = ""
 }
 
 variable "region" {
-  description = "Region"
+  description = "GCP Region"
   type        = string
-  default     = "us-west-2"
+  default     = "us-east1"
+}
+
+variable "project" {
+  description = "GCP Project Name"
+  type        = string
+  default     = ""
 }
 
 variable "cluster_name" {
-  description = "EKS Cluster name"
+  description = "GKE Cluster name"
   default     = "cnoe-ref-impl"
   type        = string
 }
 
 variable "hosted_zone_id" {
-  description = "If using external DNS, specify the Route53 hosted zone ID. Required if enable_dns_management is set to true."
-  default     = "Z0202147IFM0KVTW2P35"
+  description = "If using external DNS, specify the CloudDNS hosted zone ID. Required if enable_dns_management is set to true."
+  default     = ""
   type        = string
 }
 
@@ -44,13 +56,13 @@ variable "organization_url" {
 }
 
 variable "enable_dns_management" {
-  description = "Do you want to use external dns to manage dns records in Route53?"
+  description = "Do you want to use external dns to manage dns records in CloudDNS?"
   default     = true
   type        = bool
 }
 
 variable "enable_external_secret" {
-  description = "Do you want to use external secret to manage dns records in Route53?"
+  description = "Do you want to use external secret to manage dns records in CloudDNS?"
   default     = true
   type        = bool
 }
