@@ -1,0 +1,13 @@
+controller:
+  config:
+    hsts: "false"
+  service:
+    type: LoadBalancer
+    annotations:
+      cloud.google.com/l4-rbs: "enabled"
+      cloud.google.com/network-tier: Standard
+    targetPorts:
+      https: "https"
+  resources:
+    requests:
+      memory: 103Mi

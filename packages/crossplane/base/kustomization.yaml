@@ -1,0 +1,4 @@
+namespace: crossplane-system
+resources:
+  - provider-gcp.yaml
+  - provider-gcp-config.yaml
